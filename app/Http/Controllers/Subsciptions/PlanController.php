@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Subsciptions;
 
 use App\Models\Plan;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PlanController extends Controller
