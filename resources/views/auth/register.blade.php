@@ -9,7 +9,11 @@
 <body class="bg-light">
     <div class="container">
         <div class="row justify-content-center mt-5">
+            <div class="d-flex justify-content-center mt-3">
+                @include('layout.alert')
+            </div>
             <div class="col-md-6">
+                
                 <div class="card">
                     <div class="card-header">
                         Register
@@ -19,11 +23,11 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>

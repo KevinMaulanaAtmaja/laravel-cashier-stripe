@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Subsciptions;
+namespace App\Http\Controllers\Subscriptions;
 
 use App\Models\Plan;
 use App\Http\Controllers\Controller;

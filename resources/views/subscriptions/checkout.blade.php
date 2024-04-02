@@ -3,7 +3,7 @@
 <div class="container col-md-5">
     <h1 class="text-primary">Checkout</h1>
     <div class="card p-3 mt-5">
-        <form action="{{ route('subscriptions.checkout') }}" method="POST" id="form-element">
+        <form action="{{ route('subscriptions.store') }}" method="POST" id="form-element">
             @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Name of card</label>
@@ -11,11 +11,12 @@
             </div>
             <div class="mb-3">
                 <label for="details" class="form-label">Card details</label>
-                <div class="form-control"></div>
+                <div class="form-control" id="card-element"></div>
             </div>
+            <input type="hidden" name="plan" value="{{ $plans }}">
             <button 
                 type="submit"
-                class="btn btn-dark px-5" id="card-element" data-secret="{{ $intent->client_secret }}">
+                class="btn btn-dark px-5" id="card-btn" data-secret="{{ $intent->client_secret }}">
                 PAY
             </button>
         </form>
@@ -32,27 +33,38 @@
     cardElement.mount('#card-element');
 
     const form = document.getElementById('form-element');
-    const cardBtn = document.getElementById('card-element');
+    const cardBtn = document.getElementById('card-btn');
     const cardName = document.getElementById('nama');
-
+    
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         // console.log('submit');
         cardBtn.disabled = true;
-        // const clientSecret = document.getElementById('card-element').getAttribute('data-secret'); 
         const {setupIntent, error} = await stripe.confirmCardSetup(
             cardBtn.dataset.secret, {
                 payment_method: {
                     card: cardElement,
                     billing_details: {
-                        name: cardName.value
+                        name:  cardName.value
                     }
                 }
             }
         );
 
-        console.log(setupIntent);
-        console.log(error);
+        if (error) {
+            console.log(error);
+            cardBtn.disabled = false;
+        } else {
+            // console.log(setupIntent);
+            
+            let token = document.createElement('input');
+            token.setAttribute('type','hidden');
+            token.setAttribute('name','token');
+            token.setAttribute('value',setupIntent.payment_method);
+
+            form.appendChild(token);
+            form.submit();
+        }
     });
 </script>
 @endsection

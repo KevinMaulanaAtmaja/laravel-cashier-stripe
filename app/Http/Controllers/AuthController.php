@@ -45,9 +45,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect('/plans')->with('success', 'User berhasil login!');
+        } else {
+            return redirect('/login')->with('error', 'Username atau Password salah!');
         }
+    }
 
-        return redirect('/login')->with('error', 'Username atau Password salah!');
+    public function logout(Request $request){
+        auth()->logout();
+        return redirect('/')->with('success','Berhasil logout!');
     }
 
 }

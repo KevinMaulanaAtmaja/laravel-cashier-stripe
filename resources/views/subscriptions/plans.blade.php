@@ -1,6 +1,7 @@
 @extends('layout.main')
 @section('konten')
 <div class="container d-grid justify-content-center">
+    <h2 class="text-info">Subscribe Plans</h2>
     <div class="row">
         @foreach ($plan as $p)
         <div class="col-12 col-md-auto">

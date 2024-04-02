@@ -9,6 +9,9 @@
 <body class="bg-light">
     <div class="container">
         <div class="row justify-content-center mt-5">
+            <div class="d-flex justify-content-center mt-3">
+                @include('layout.alert')
+            </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
@@ -19,7 +22,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="username" class="form-control" id="username" name="username" required>
+                                <input type="username" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
