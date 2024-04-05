@@ -12,6 +12,7 @@
         {{-- <p>Try scrolling the rest of the page to see this option in action.</p> --}}
         <nav class="nav flex-column">
             <a class="nav-link"  href="{{ route('account') }}">Account</a>
+            <a class="nav-link"  href="{{ route('product') }}">Product</a>
             <a class="nav-link"  href="{{ route('account.subs') }}">Subs</a>
         </nav>
     </div>

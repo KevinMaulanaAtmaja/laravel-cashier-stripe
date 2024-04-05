@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Subscriptions\Account;
 
-use App\Models\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SubsController extends Controller
 {
-    public function index()
+    public function cancelIndex()
     {
         return view('account.subs.index');
     }
-    public function cancel(Request $request)
+    public function cancelStore(Request $request)
     {
 
         // $yearSubs = $request->user()->subscription('Year');

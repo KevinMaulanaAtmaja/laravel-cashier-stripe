@@ -21,14 +21,15 @@
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="username" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
+                                <label for="tipeLogin" class="form-label">Username/Email</label>
+                                <input type="text" class="form-control" id="tipeLogin" name="tipeLogin" value="{{ old('tipeLogin') }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
+                            <a href="{{ route('registerLayout') }}" class="btn btn-secondary d-inline">Register</a>
                         </form>
                     </div>
                 </div>

@@ -8,6 +8,7 @@
         <div class="navbar-nav">
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="{{ route('subscriptions.plans') }}">Plan</a>
+          <a class="nav-link" href="{{ route('product') }}">Product</a>
           {{-- <a class="nav-link" href="{{ route('subscriptions.checkout') }}">Checkout</a> --}}
           <a class="nav-link" href="{{ route('account') }}">Account</a>
           @auth

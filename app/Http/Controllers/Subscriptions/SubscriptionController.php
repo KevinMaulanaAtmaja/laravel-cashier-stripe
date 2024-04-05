@@ -28,6 +28,6 @@ class SubscriptionController extends Controller
         // $request->user()->newSubscription($plan->title, $plan->stripe_id)->create($request->token);
         $request->user()->newSubscription('default', $plan->stripe_id)->create($request->token);
 
-        return redirect('/plans')->with('success', 'Berhasil subs!');
+        return redirect()->route('account')->with('success', 'Berhasil subs!');
     }
 }
