@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\isLogin;
 use App\Http\Middleware\NotSubscribed;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Foundation\Application;
@@ -14,7 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'notsubs' => NotSubscribed::class
+            'notsubs' => NotSubscribed::class,
+            'isLogin' => isLogin::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             '/webhook'

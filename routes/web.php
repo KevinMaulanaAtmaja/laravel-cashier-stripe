@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth', 'notsubs']], function () {
 });
 
 Route::group(['prefix' => 'auth'], function(){
-    Route::get('/login', [AuthController::class, 'loginLayout'])->name('loginLayout');
+    Route::get('/login', [AuthController::class, 'loginLayout'])->name('loginLayout')->middleware('isLogin');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
